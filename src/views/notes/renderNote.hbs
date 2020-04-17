@@ -1,0 +1,30 @@
+<div class="row">
+    {{#if notes}}
+    {{#each notes}}
+    <div class="col-md-3 mt-3">
+        <div class="card card-body">
+            <h2 class="d-flex justify-content-between aleign-items-center">
+                {{title}} <a href="/notes/edit/{{_id}}" class="btn btn-dark"><i class="fa fa-pencil"></i></a>
+            </h2>
+            <div class="text-center">
+                <p>{{description}}</p>
+                <p>{{timeago createdAt}}</p>
+                <form action="/notes/delete/{{_id}}?_method=DELETE" method="post">
+                    <button class="btn btn-danger">delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="col-md-5 mx-auto">
+        <div class="card mt-5">
+            <div class="card-body text-center fondo">
+                <h2>Welcome {{user.name}} you don't have note yet</h2>
+                <a href="/notes/add" class="btn btn-primary">Create one</a>
+            </div>
+
+        </div>
+    </div>
+    {{/if}}
+</div>
